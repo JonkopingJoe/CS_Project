@@ -1,1 +1,1 @@
-# CS_Project
+# CS Group Project
