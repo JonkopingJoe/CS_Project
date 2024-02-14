@@ -28,6 +28,19 @@ class Graph:
         """
 
     def add_relationship(self, name1, name2):
+
+        """
+        This method add relationship between two members
+
+        :param name1: name of person 1
+        :param name2: name of person 2
+
+        :return: None
+
+        Usage:
+        network.add_relationship('Bob', 'Alice')
+        """
+
         if name1 not in self.relationships[name2] and name2 not in self.relationships[name1]:
             self.relationships[name1].append(name2)
             self.relationships[name2].append(name1)
