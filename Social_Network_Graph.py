@@ -13,7 +13,7 @@ class Node:
 
 
 class Graph:
-    def __int__(self):
+    def __init__(self):
         self.set_of_nodes = set()
 
     def add_node(self, node: Node) -> None:
