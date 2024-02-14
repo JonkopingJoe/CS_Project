@@ -27,7 +27,7 @@ class Graph:
         - member: this is the Name of the member
 
         Returns:
-        - List of all the member's friends
+        - A list of all the member's friends
 
         Usage:
         print("Friends of Alice:", social_network.find_friends("Alice"))
