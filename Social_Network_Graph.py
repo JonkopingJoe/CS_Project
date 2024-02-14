@@ -19,6 +19,8 @@ class Graph:
             #Create relationships for the members, an empty list as default
             self.relationships[member] = []
 
+    def add_relationship(self, name1, name2):
+
     def find_friends(self, member: str):
         """
         This method finds all the friends of a particular member.
