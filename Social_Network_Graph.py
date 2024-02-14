@@ -20,7 +20,7 @@ class Graph:
             self.relationships[member] = []
 
     def add_relationship(self, name1, name2):
-        print(name1)
+
 
 
     def find_friends(self, member: str):
