@@ -12,12 +12,20 @@ class Graph:
         self.relationships = {}
     
     def add_member(self, member: str, **kwargs):
-        #Check if the member exists
-        if member not in self.members:
-            #Create a new member with the kwargs(age and location) 
-            self.members[member] = kwargs
-            #Create relationships for the members, an empty list as default
-            self.relationships[member] = []
+        """
+        This method add a new member into the graph
+
+        Args:
+        - member: a str as name of member, stored as a key in dic members
+        - age: a nember as age of member
+        - location: a str as the location for member
+
+        Return:
+        -None
+        
+        Usage:
+        network.add_member("Joe", age=21, location="Coventry")
+        """
 
     def add_relationship(self, name1, name2):
         if name1 not in self.relationships[name2] and name2 not in self.relationships[name1]:
@@ -34,7 +42,7 @@ class Graph:
         - member: this is the Name of the member
 
         Returns:
-        - List of all the member's friends
+        - A list of all the member's friends
 
         Usage:
         print("Friends of Alice:", social_network.find_friends("Alice"))
