@@ -3,18 +3,21 @@
 
 class Graph:
     def __init__(self):
+        #Create a dictionary to store members as Nodes, names as keys, values are dics with ages and locations.
+        #Example: {"Joe":{"age": 21, "Location": "Coventry"}
         self.members = {}
-        #Create a dictionary to store members as Nodes
-        self.relationships = {}
         #Create a dictionary to store relationships as Edges
+        #Members as keys, and lists to store relationships
+        #Example: {"Joe":["Xi Jingping", "Kim Jung-un"]
+        self.relationships = {}
     
     def add_member(self, member: str, **kwargs):
-        if member not in self.members:
         #Check if the member exists
+        if member not in self.members:
+            #Create a new member with the kwargs(age and location) 
             self.members[member] = kwargs
-            #Create a new member with the kwargs
+            #Create relationships for the members, an empty list as default
             self.relationships[member] = []
-            #Create relationships for the member
 
     def find_friends(self, member: str):
         """
