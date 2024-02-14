@@ -1,39 +1,54 @@
-class Node:
-    def __init__(self, name: str, age: int, location: str):
-        self.name = name
-        self.age = age
-        self.location = location
-        self.friends_list = []  # Holds nodes in the graph class
-
-    def add_friend(self, new_friend) -> None:  # Makes new edge
-        if new_friend not in self.friends_list:
-            self.friends_list.append(new_friend)
-
-        return None
-
+#First project
+#Social Network Graph
 
 class Graph:
-    def __int__(self):
-        self.set_of_nodes = set()
+    def __init__(self):
+        #Create a dictionary to store members as Nodes, names as keys, values are dics with ages and locations.
+        #Example: {"Joe":{"age": 21, "Location": "Coventry"}
+        self.members = {}
+        #Create a dictionary to store relationships as Edges
+        #Members as keys, and lists to store relationships
+        #Example: {"Joe":["Xi Jingping", "Kim Jung-un"]
+        self.relationships = {}
+    
+    def add_member(self, member: str, **kwargs):
+        """
+        This method add a new member into the graph
 
-    def add_node(self, node: Node) -> None:
-        if node not in self.set_of_nodes:
-            self.set_of_nodes.add(node)
+        Args:
+        - member: a str as name of member, stored as a key in dic members
+        - age: a nember as age of member
+        - location: a str as the location for member
 
-        return None
+        Return:
+        -None
+        
+        Usage:
+        network.add_member("Joe", age=21, location="Coventry")
+        """
 
-    def add_relations(self, person1: Node, person2: Node) -> None:
-        if person1 in self.set_of_nodes and person2 in self.set_of_nodes:
-            person1.add_friend(person2)
-            person2.add_friend(person1)
+    def add_relationship(self, name1, name2):
+        if name1 not in self.relationships[name2] and name2 not in self.relationships[name1]:
+            self.relationships[name1].append(name2)
+            self.relationships[name2].append(name1)
+        else:
+            print("Both users are already friends")
 
-        return None
+    def find_friends(self, member: str):
+        """
+        This method finds all the friends of a particular member.
 
-    def get_friends(self, name: str) -> list:
-        for person in self.set_of_nodes:
-            if person.name == name:
-                return person.friends_list
+        Args:
+        - member: this is the Name of the member
 
-        return None
+        Returns:
+        - A list of all the member's friends
 
-
+        Usage:
+        print("Friends of Alice:", social_network.find_friends("Alice"))
+        """
+        if member in self.members:
+            return self.relationships[member]
+        else:
+            return []
+    
