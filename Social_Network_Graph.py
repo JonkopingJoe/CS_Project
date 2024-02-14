@@ -20,8 +20,11 @@ class Graph:
             self.relationships[member] = []
 
     def add_relationship(self, name1, name2):
-
-
+        if name1 not in self.relationships[name2] and name2 not in self.relationships[name1]:
+            self.relationships[name1].append(name2)
+            self.relationships[name2].append(name1)
+        else:
+            print("Both users are already friends")
 
     def find_friends(self, member: str):
         """
