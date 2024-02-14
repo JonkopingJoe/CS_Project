@@ -7,9 +7,4 @@ class Graph:
         """
         self.vertices = {}
 
-    def add_vertex(self, vertex):
-        """
-        This adds a vertex to the graph.
-        """
-        if vertex not in self.vertices:
-            self.vertices[vertex] = set()
+    
