@@ -99,3 +99,35 @@ class Graph:
             return friends
         else:
             return None
+    def shortest_path(self, start:Member, end:Member) -> int:
+        """
+        Get the degree of shortest path between two members
+        !!!Notice: receive instances of class Member, not name!!!
+        
+        Arg:
+            start(member)
+            end(member)
+
+        Return:
+            int: The degree (length) of the shortest path
+
+        Usage:
+            bikiniBottom.shortest_path("spongeBob", "patrick")
+        """
+        if start == end:
+            return 0
+        queue = [start]    #a queue with members waiting to be checked
+        visited = set()    #a set which store members have been searched
+        distance = {start: -1}    
+        #record our counting
+        #notice the first time we seach for starting member itself, distance+=1 should be 0, so we start with -1
+        while queue:    #always true
+            current = queue.pop(0)    #get the item to compare
+            if current == end:    #if it is the target
+                return distance[current]+1    #get the distance
+            visited.add(current)    #store members with are not the target
+            for friend in current.friends_list:    #traverse the edges of current member
+                if friend not in visited:
+                    queue.append(friend)    #add friends of current member to the queue waiting to be checked
+                    distance[friend] = distance[current] + 1
+        return None    #default
