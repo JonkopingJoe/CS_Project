@@ -29,7 +29,7 @@ class Member:
             spongeBob.add_friend(patrick)
         """
         if new_friend not in self.friends_list:
-            self.friends_list.append(new_friend)
+            self.friends_list.append(new_friend.name)
 
         return None
 
