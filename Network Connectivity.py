@@ -12,9 +12,7 @@ class Graph:
         if vertex1 in self.adjacency_matrix and vertex2 in self.adjacency_matrix:
             self.adjacency_matrix[vertex1].append(vertex2)
             self.adjacency_matrix[vertex2].append(vertex1)
-    
-    def get_adjacency_matrix(self):
-        return self.adjacency_matrix
+
     
 
 def is_network_connected(graph) -> bool:
