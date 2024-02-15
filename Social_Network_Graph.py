@@ -79,21 +79,23 @@ class Graph:
 
         return None
 
-    def get_friends(self, name: str) -> list:
+    def get_friends(self, member:Member) -> list:
         """
         Get the list of friends for a given person.
 
         Args:
-            name (str): The name of the person.
+            member (Member): The instance of a member.
 
         Returns:
-            list: A list of friends' Node objects, or None if the person is not found.
+            list: A list of friends' name
 
         Usage:
             bikiniBottom.get_friends(spongeBob)
         """
-        for person in self.set_of_members:
-            if person.name == name:
-                return person.friends_list
-
-        return None
+        friends = []
+        if member in self.set_of_members:
+            for friend in member.friends_list:
+                friends.append(friend.name)
+            return friends
+        else:
+            return None
