@@ -1,6 +1,6 @@
 ### About this repository  
 
-These are implementations of mini projects assigned to us (collaborators of this repository) during DSA classes.  
+These are implementations of mini projects assigned to us (contributors to this repository) during DSA classes.  
 Probably not *"the next big thing"* at the moment, we thought you should know.    
 
 #### Details of the Mini Projects  
