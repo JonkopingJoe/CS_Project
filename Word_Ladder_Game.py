@@ -1,8 +1,68 @@
-words = []
-with open("words_alpha.txt", 'r') as f:
-    for line in f:
-        if len(line) == 4:
-            words.append(line.strip('\n'))
+#  Function to load the words we need from the database
+def load_all_words(file_name: str) -> list:
+    with open("words_alpha.txt", 'r') as f:
+        words = []
+        for line in f:
+            if len(line) == 4:
+                words.append(line.strip('\n'))
+    return words
+
+# Function to find neighbours from the list of words we have extracted from Db
+def find_neighbours(word, words) -> list:
+    """
+    Finds the neighbours in the word list
+
+    Args: 
+    - A word  
+    - List of words from the database
+
+    Returns: 
+    A list of all words in the database that can be formed by changing the one letter in the input word
+    """  
+    neighbours = []
+    for a_word in words:
+        if len(a_word) == word:
+            # Find the positions where word and a_word have different letters and flag as True or False
+            # Count the True values to count the pairs of characters different between two the words
+            
+            diff_count = sum(a != b for a,b in zip(word, a_word))
+            if diff_count == 1:
+                # if there is only 1 difference between the word and a word in the Db
+                neighbours.append(a_word)
+            return neighbours
+
+
+# Function to find the shortest path between the start of a word and end of a word
+def word_ladder(word_start, word_end, words) -> None:
+    """
+    Args:
+    - Start of a word
+    - End of a word 
+    - List of words from Db
+
+    Usage:
+    Uses find_neighbours() to find the shortest path between word_start and word_end
+    """
+    queue = [(word_start, [word_start])]
+    visited = set([word_start])
+
+    while queue:
+        # Do some unpacking: 
+        # Assign the first element of the tuple (the word) to the variable current_word, and the second element (the path) to the variable path
+        current_word, path = queue.pop(0) 
+        neighbours = find_neighbours(current_word, words)
+
+        for neighbour in neighbours:
+            if neighbour == word_end:
+                return path + [neighbour]
+            if neighbour not in visited:
+                visited.add(neighbour)
+                queue.append((neighbour, path + [neighbour]))
+    return None
+
+
+
+
 
 class WordNode:
     def __init__(self, word:str) -> None:
