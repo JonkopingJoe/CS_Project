@@ -25,15 +25,13 @@ class Graph:
 
 
 
-#  Function to load the words we need from the database (only 3 letter words)
-def load_all_words() -> list:
+#load the words we need from the database (only 3 letter words)
+with open("words_alpha.txt", 'r') as f:
+    words = []
+    for line in f:
+        if len(line) == 4:
+            words.append(line.strip('\n'))
 
-    with open("words_alpha.txt", 'r') as f:
-        words = []
-        for line in f:
-            if len(line) == 4:
-                words.append(line.strip('\n'))
-    return words
 
 # Function to find neighbours from the list of words we have extracted from Db
 def find_neighbours(word, words) -> list:
@@ -87,6 +85,3 @@ def word_ladder(word_start, word_end) -> None:
                 queue.append((neighbour, path + [neighbour]))
     return None
 
-words = load_all_words()
-
-print(word_ladder('cat', 'bot'))
