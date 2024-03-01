@@ -32,38 +32,6 @@ def find_neighbours(word, words) -> list:
             return neighbours
 
 
-# Function to find the shortest path between the start of a word and end of a word
-def word_ladder(word_start, word_end, words) -> None:
-    """
-    Args:
-    - Start of a word
-    - End of a word 
-    - List of words from Db
-
-    Usage:
-    Uses find_neighbours() to find the shortest path between word_start and word_end
-    """
-    queue = [(word_start, [word_start])]
-    visited = set([word_start])
-
-    while queue:
-        # Do some unpacking: 
-        # Assign the first element of the tuple (the word) to the variable current_word, and the second element (the path) to the variable path
-        current_word, path = queue.pop(0) 
-        neighbours = find_neighbours(current_word, words)
-
-        for neighbour in neighbours:
-            if neighbour == word_end:
-                return path + [neighbour]
-            if neighbour not in visited:
-                visited.add(neighbour)
-                queue.append((neighbour, path + [neighbour]))
-    return None
-
-
-
-
-
 class WordNode:
     def __init__(self, word:str) -> None:
         self.word = word
